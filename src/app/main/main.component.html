@@ -1,0 +1,16 @@
+<mat-form-field appearance="fill">
+    <mat-select [(value)]="selectedValue " (selectionChange)="getArtistsData()">
+        <mat-option></mat-option>
+        <mat-option [value]="option.value" *ngFor="let option of countries">{{ option.viewValue }}</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-selection-list [multiple]="false">
+    <mat-list-option *ngFor="let artist of artists" (click)="openDetail(artist.mbid)">
+        <!-- <img matListAvatar [src]="artist.image[2]['#text']" alt="..."> -->
+
+        Artist: {{artist.name}}
+        Listeners: {{artist.listeners}}
+    </mat-list-option>
+
+</mat-selection-list>

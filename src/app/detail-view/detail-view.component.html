@@ -1,0 +1,16 @@
+<mat-icon aria-hidden="false" aria-label="Example home icon" routerLink="../main">west</mat-icon> Go back
+
+<div *ngIf='artist'>
+    Name: {{artist.name}}
+    Listeners: {{artist.stats.listeners}}
+    Play Count: {{artist.stats.playcount}}
+</div>
+
+    <mat-list >
+        <mat-list-item *ngFor="let track of tracks">
+           Title:  {{track.name}}
+            <!-- <img matListAvatar [src]="artist.image[2]['#text']" alt="..."> -->
+
+            Play Count: {{track.playcount}}
+        </mat-list-item>
+    </mat-list>
