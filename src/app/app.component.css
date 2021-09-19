@@ -13,3 +13,13 @@ mat-sidenav {
     padding: 16px;
     text-align: center;
 }
+
+
+.full-width {
+    width: 80%;
+    height:90%;
+}
+
+mat-form-field {
+    width: 100%;
+}

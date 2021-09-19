@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { AppService } from '../app.service';
 import { Artist } from '../artist.model';
 import { Track } from '../track.model';
+import { Album } from '../album.model';
 
 @Component({
   selector: 'app-detail-view',
@@ -13,6 +14,7 @@ export class DetailViewComponent implements OnInit, OnChanges {
 
   artist: Artist;
   tracks: Track[];
+  albums: Album[]
   @Input() id: string;
 
   constructor(private activatedRoute: ActivatedRoute, private appservice: AppService) {
@@ -21,25 +23,30 @@ export class DetailViewComponent implements OnInit, OnChanges {
 
   getData() {
     this.activatedRoute.queryParams.subscribe(params => {
-      let mbId = '';
-      if (!this.id) {
+      let mbId = ' ';
+      if (this.id == null) {
         mbId = params['mbid'];
 
       }
-      else {
+      else if (this.id) {
         mbId = this.id
 
       }
-      console.log(mbId);
 
-      this.appservice.getArtist(mbId).subscribe(art => {
-        this.artist = (<any>art).artist;
-      })
+      if (mbId) {
 
-      this.appservice.getToptTracks(mbId).subscribe(art => {
-        this.tracks = (<any>art).toptracks.track;
-      })
+        this.appservice.getArtist(mbId).subscribe(art => {
+          this.artist = (<any>art).artist;
+        })
 
+        this.appservice.getToptTracks(mbId).subscribe(art => {
+          this.tracks = (<any>art).toptracks.track;
+        })
+        
+        this.appservice.getToptAlbums(mbId).subscribe(albums => {
+          this.albums = (<any>albums).topalbums.album;
+        })
+      }
     });
 
   }

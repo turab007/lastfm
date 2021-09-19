@@ -1,7 +1,7 @@
-<div style="display: flex;">
+<div class="compare pl-2">
     <form class="example-form">
         <mat-form-field class="example-full-width">
-            <input type="text" placeholder="Pick artist" aria-label="artist1" matInput [formControl]="artist1"
+            <input type="text" placeholder="Pick first" aria-label="artist1" matInput [formControl]="artist1"
                 [matAutocomplete]="auto1">
             <mat-autocomplete #auto1="matAutocomplete">
                 <mat-option *ngFor="let option of artist1Filter | async" [value]="option.name"
@@ -13,7 +13,7 @@
     </form>
     <form class="example-form">
         <mat-form-field class="example-full-width">
-            <input type="text" placeholder="Pick one" aria-label="artist2" matInput [formControl]="artist2"
+            <input type="text" placeholder="Pick second" aria-label="artist2" matInput [formControl]="artist2"
                 [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete">
                 <mat-option *ngFor="let option of artist2Filter | async" [value]="option.name"
@@ -25,11 +25,11 @@
     </form>
 </div>
 
-<div style="display: flex;">
-    <app-detail-view [id]='selectedArtistId1'>
+<div class="compare pl-2">
+    <app-detail-view [id]='selectedArtistId1' style="width: 45%;">
     </app-detail-view>
 
-    <app-detail-view [id]='selectedArtistId2'>
+    <app-detail-view [id]='selectedArtistId2' style="width: 45%;">
 
 
     </app-detail-view>

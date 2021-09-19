@@ -1,0 +1,20 @@
+.title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.artist {
+    background-color: lightgray;
+
+}
+
+.top {
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
+mat-list-item {
+background-color: #dfe0e6;
+margin-top: 5px;
+}

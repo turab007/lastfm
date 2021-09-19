@@ -3,9 +3,9 @@
     LastFM Challange
   </span>
 
-  <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <input type="text" placeholder="Search Artist" aria-label="Number" matInput [formControl]="myControl"
+  <form class="full-width ml-3">
+    <mat-form-field>
+      <input type="text" placeholder="Search" aria-label="Number" matInput [formControl]="myControl"
         [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name"

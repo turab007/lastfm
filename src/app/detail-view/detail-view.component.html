@@ -1,16 +1,45 @@
-<mat-icon aria-hidden="false" aria-label="Example home icon" routerLink="../main">west</mat-icon> Go back
+<div *ngIf='artist' class="p-2 artist">
+    <p class="title">
+        {{artist.name}}
+    </p>
+    <div>
+        <div>
+            Listeners:
 
-<div *ngIf='artist'>
-    Name: {{artist.name}}
-    Listeners: {{artist.stats.listeners}}
-    Play Count: {{artist.stats.playcount}}
+            <span style="font-weight: bold;">
+                {{artist.stats.listeners}}
+            </span>
+        </div>
+        <div>
+            Play Count:
+            <span style="font-weight: bold;">
+
+                {{artist.stats.playcount}}
+            </span>
+        </div>
+    </div>
 </div>
 
-    <mat-list >
+<div *ngIf='tracks && albums' class="mt-2">
+
+    <span class="top">Top Tracks</span>
+    <mat-list>
         <mat-list-item *ngFor="let track of tracks">
-           Title:  {{track.name}}
+            Title: {{track.name}}
             <!-- <img matListAvatar [src]="artist.image[2]['#text']" alt="..."> -->
 
             Play Count: {{track.playcount}}
         </mat-list-item>
     </mat-list>
+
+
+    <span class="top">Top Albums</span>
+    <mat-list>
+        <mat-list-item *ngFor="let album of albums">
+            Title: {{album.name}}
+            <!-- <img matListAvatar [src]="artist.image[2]['#text']" alt="..."> -->
+
+            Play Count: {{album.playcount}}
+        </mat-list-item>
+    </mat-list>
+</div>
