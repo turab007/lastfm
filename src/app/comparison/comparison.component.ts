@@ -15,7 +15,9 @@ import { Router } from '@angular/router';
 export class ComparisonComponent implements OnInit {
 
   artist1 = new FormControl();
+  selectedArtistId1: string;
   artist2 = new FormControl();
+  selectedArtistId2: string;
 
   artist1Filter: Observable<any[]>;
   artist2Filter: Observable<any[]>;
@@ -45,7 +47,7 @@ export class ComparisonComponent implements OnInit {
   }
 
 
-  filter( formvalue: string): Observable<Artist[]> {
+  filter(formvalue: string): Observable<Artist[]> {
     console.log('I am filtering ', formvalue)
     return this.appService.searchArtist(formvalue).pipe(
       map((response) =>
@@ -57,16 +59,14 @@ export class ComparisonComponent implements OnInit {
   }
 
 
-  openDetail(mbid: string, action: string) {
-    if (action === 'det') {
+  openDetail(mbid: string, action: number) {
+    if (action === 1) {
       this.artist1.reset()
-      this.router.navigate(['/detail'], { queryParams: { mbid: mbid } })
-    }
-    else if (action === 'comp') {
-      this.router.navigate(['/compare'])
-    }
-    else if (action === 'main') {
-      this.router.navigate(['/main'])
-    }
+      this.selectedArtistId1 = mbid
+  }
+    else if (action === 2) {
+      this.artist2.reset()
+      this.selectedArtistId2 = mbid
+     }
   }
 }

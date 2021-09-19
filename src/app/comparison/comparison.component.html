@@ -5,7 +5,7 @@
                 [matAutocomplete]="auto1">
             <mat-autocomplete #auto1="matAutocomplete">
                 <mat-option *ngFor="let option of artist1Filter | async" [value]="option.name"
-                    (click)="openDetail(option.mbid, 'det')">
+                    (click)="openDetail(option.mbid, 1)">
                     {{option.name}}
                 </mat-option>
             </mat-autocomplete>
@@ -17,10 +17,20 @@
                 [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete">
                 <mat-option *ngFor="let option of artist2Filter | async" [value]="option.name"
-                    (click)="openDetail(option.mbid, 'det')">
+                    (click)="openDetail(option.mbid, 2)">
                     {{option.name}}
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
     </form>
+</div>
+
+<div style="display: flex;">
+    <app-detail-view [id]='selectedArtistId1'>
+    </app-detail-view>
+
+    <app-detail-view [id]='selectedArtistId2'>
+
+
+    </app-detail-view>
 </div>
