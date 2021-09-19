@@ -1,15 +1,14 @@
-import { Component, ViewChild } from '@angular/core';
-import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { tap, startWith, debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
+import { startWith, debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
 import { AppService } from './app.service';
 import { Artist } from './artist.model'
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 
-export interface User {
-  name: string;
-}
+// export interface User {
+//   name: string;
+// }
 
 @Component({
   selector: 'app-root',
@@ -37,24 +36,33 @@ export class AppComponent {
 
 
 
-  displayFn(user: User): string {
-    return user && user.name ? user.name : '';
-  }
+  // displayFn(user: User): string {
+  //   return user && user.name ? user.name : '';
+  // }
 
 
   filter(val: string): Observable<Artist[]> {
     return this.appService.searchArtist(this.myControl.value).pipe(
       map((response) =>
-      response.filter((option) => {
+        response.filter((option) => {
           return option.name.toLowerCase().indexOf(val.toLowerCase()) === 0;
         })
       )
     );
   }
 
-    
-  openDetail(mbid:string) {
-    this.router.navigate(['/detail'],{queryParams:{mbid: mbid}})
+
+  openDetail(mbid: string, action: string) {
+    if (action === 'det') {
+      this.myControl.reset()
+      this.router.navigate(['/detail'], { queryParams: { mbid: mbid } })
+    }
+    else if (action === 'comp') {
+      this.router.navigate(['/compare'])
+    }
+    else if (action === 'main') {
+      this.router.navigate(['/main'])
+    }
   }
 
 }

@@ -1,17 +1,22 @@
 <mat-toolbar class="mat-elevation-z8">
-  LastFM Challange
+  <span (click)="openDetail('', 'main')">
+    LastFM Challange
+  </span>
 
   <form class="example-form">
     <mat-form-field class="example-full-width">
-      <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <input type="text" placeholder="Search Artist" aria-label="Number" matInput [formControl]="myControl"
+        [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name" (click)="openDetail(option.mbid)">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name"
+          (click)="openDetail(option.mbid, 'det')">
           {{option.name}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
   </form>
-
+  <mat-icon aria-hidden="false" aria-label="Coompare icon" (click)="openDetail('', 'comp')">compare
+  </mat-icon>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
